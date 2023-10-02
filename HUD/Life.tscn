@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtieo61qqrmef"]
+
+[ext_resource type="Texture2D" uid="uid://brd2k01nasdaa" path="res://Art/cute-and-simple-pink-heart-shape-in-pixel-art-free-png.webp" id="1_rp84v"]
+
+[node name="Life" type="TextureRect"]
+offset_right = 63.0
+offset_bottom = 46.0
+texture = ExtResource("1_rp84v")
+expand_mode = 3
