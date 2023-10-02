@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bs5f5gskbvd4h"]
+[gd_scene load_steps=12 format=3 uid="uid://bs5f5gskbvd4h"]
 
 [ext_resource type="Texture2D" uid="uid://cdx1sj4xfy2uf" path="res://Art/BasicBackground.png" id="1_mx6l3"]
 [ext_resource type="PackedScene" uid="uid://b5k1n2mfvw7hc" path="res://player.tscn" id="1_poj7j"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ht504qi0xm0d" path="res://HUD/HUD.tscn" id="4_re8rq"]
 [ext_resource type="Texture2D" uid="uid://d2cino0m5vtyi" path="res://Art/BasicTileSheets_scaled_4x_pngcrushed.png" id="4_xle4i"]
 [ext_resource type="PackedScene" uid="uid://dh6uftu072frp" path="res://MainMenu/main_menu.tscn" id="5_6usse"]
+[ext_resource type="AudioStream" uid="uid://bfvhs3q7x6tdq" path="res://SFX/alexander-nakarada-chase(chosic.com).mp3" id="8_masdc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ivha7"]
 resource_name = "floors"
@@ -53,6 +54,10 @@ sources/1 = SubResource("TileSetAtlasSource_p62ir")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qlirn")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_masdc")
+autoplay = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
