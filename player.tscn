@@ -1,0 +1,98 @@
+[gd_scene load_steps=13 format=3 uid="uid://b5k1n2mfvw7hc"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_5c4gn"]
+[ext_resource type="Texture2D" uid="uid://bqdxsmyql3uv3" path="res://Art/PlayerSprites/PrototypeDown.png" id="2_ft45p"]
+[ext_resource type="Texture2D" uid="uid://d20yw182uhh3a" path="res://Art/PlayerSprites/PrototypeSide.png" id="3_8kll5"]
+[ext_resource type="Texture2D" uid="uid://buqbeyqdrnvjh" path="res://Art/PlayerSprites/PrototypeUp.png" id="4_s8s4d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0m77"]
+atlas = ExtResource("2_ft45p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s22it"]
+atlas = ExtResource("2_ft45p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk1fl"]
+atlas = ExtResource("3_8kll5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1rg5"]
+atlas = ExtResource("3_8kll5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xcxo"]
+atlas = ExtResource("4_s8s4d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uaims"]
+atlas = ExtResource("4_s8s4d")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eg8r4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0m77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s22it")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bk1fl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1rg5")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xcxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uaims")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxqrt"]
+size = Vector2(128, 128)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_5c4gn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_eg8r4")
+animation = &"down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xxqrt")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="WandStartPositions" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="WandStartPositions"]
+position = Vector2(-52, 14)
+
+[node name="Marker2D2" type="Marker2D" parent="WandStartPositions"]
+position = Vector2(-51, 9)
+
+[node name="Marker2D3" type="Marker2D" parent="WandStartPositions"]
+position = Vector2(-51, 11)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
