@@ -1,12 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs5f5gskbvd4h"]
+[gd_scene load_steps=11 format=3 uid="uid://bs5f5gskbvd4h"]
 
 [ext_resource type="Texture2D" uid="uid://cdx1sj4xfy2uf" path="res://Art/BasicBackground.png" id="1_mx6l3"]
 [ext_resource type="PackedScene" uid="uid://b5k1n2mfvw7hc" path="res://player.tscn" id="1_poj7j"]
 [ext_resource type="Script" path="res://main.gd" id="1_qlirn"]
-
 [ext_resource type="Texture2D" uid="uid://cujglr33cekur" path="res://Art/Void.png" id="3_xofek"]
-[ext_resource type="Texture2D" uid="uid://d2cino0m5vtyi" path="res://Art/BasicTileSheets_scaled_4x_pngcrushed.png" id="4_xle4i"]
 [ext_resource type="PackedScene" uid="uid://ht504qi0xm0d" path="res://HUD/HUD.tscn" id="4_re8rq"]
+[ext_resource type="Texture2D" uid="uid://d2cino0m5vtyi" path="res://Art/BasicTileSheets_scaled_4x_pngcrushed.png" id="4_xle4i"]
 [ext_resource type="PackedScene" uid="uid://dh6uftu072frp" path="res://MainMenu/main_menu.tscn" id="5_6usse"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ivha7"]
@@ -84,9 +83,13 @@ position = Vector2(332, 227)
 zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
 
-[node name="Projectiles" type="Node2D" parent="."]
+[node name="HUD" parent="Player" instance=ExtResource("4_re8rq")]
+offset_left = -332.0
+offset_top = -227.0
+offset_right = -292.0
+offset_bottom = -187.0
 
-[node name="HUD" parent="." instance=ExtResource("4_re8rq")]
+[node name="Projectiles" type="Node2D" parent="."]
 
 [node name="MainMenu" parent="." instance=ExtResource("5_6usse")]
 offset_left = -740.0
