@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bs5f5gskbvd4h"]
+[gd_scene load_steps=6 format=3 uid="uid://bs5f5gskbvd4h"]
 
 [ext_resource type="Texture2D" uid="uid://cdx1sj4xfy2uf" path="res://Art/BasicBackground.png" id="1_mx6l3"]
 [ext_resource type="PackedScene" uid="uid://b5k1n2mfvw7hc" path="res://player.tscn" id="1_poj7j"]
 [ext_resource type="Script" path="res://main.gd" id="1_qlirn"]
+[ext_resource type="PackedScene" uid="uid://ht504qi0xm0d" path="res://HUD/HUD.tscn" id="4_re8rq"]
+[ext_resource type="PackedScene" uid="uid://dh6uftu072frp" path="res://MainMenu/main_menu.tscn" id="5_6usse"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qlirn")
@@ -23,5 +25,13 @@ zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
 
 [node name="Projectiles" type="Node2D" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("4_re8rq")]
+
+[node name="MainMenu" parent="." instance=ExtResource("5_6usse")]
+offset_left = -740.0
+offset_top = -360.0
+offset_right = 1410.0
+offset_bottom = 840.0
 
 [connection signal="wand" from="Player" to="." method="_on_player_wand"]
