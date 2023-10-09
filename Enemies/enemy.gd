@@ -14,35 +14,19 @@
 extends CharacterBody2D
 
 var direction = Vector2.ZERO  # Declare and initialize 'direction'
-var speed = 100  # Speed of the enemy
+@export var speed = 400  # Speed of the enemy
 var player = null  # Declare a variable to hold the player node
+var chase_player = false
 
-var wand
-
-func _init(wand_node):
-	wand = wand_node
-	
 func _ready():
-	# Try to get the player node
-	player = get_node_or_null("/root/Player")  # Replace with the actual path to your player node
+	$AnimatedSprite2D.play("default")
 
-func _process(_delta):
-	# Check if the player node exists
-	if player != null:
-		# Update 'direction' to follow the player
+func _physics_process(delta):
+	if chase_player:
 		direction = (player.position - position).normalized()
-		
-		# velocity
 		velocity = direction * speed
-		
-		# move and slide
 		move_and_slide()
 
-# Function to handle when the enemy is hit by a projectile
-func _on_Wand_hit(body):
-	if body.is_in_group("projectiles"):
-		body.queue_free() # This will remove the enemy from the scene
-	
 func _on_area2D_body_entered(body):
 	if body.is_in_group("projectiles"):
 		body.queue_free()
@@ -50,18 +34,11 @@ func _on_area2D_body_entered(body):
 		body.connect("hit", self, "_on_Wand_hit")
 		body.emit_signal("hit")
 		queue_free()
-		
+
+func _on_detection_area_body_entered(body):
+	player = body
+	chase_player = true
 
 
-func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
-
-
-
-func _on_area_2d_body_entered(body):
-	if body.name.contains('wand'):
-		body.queue_free() # Replace with function body.
-
-
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	pass # Replace with function body.
+func _on_detection_area_body_exited(body):
+	chase_player = false

@@ -65,11 +65,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxqrt"]
-size = Vector2(128, 128)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bliou"]
+radius = 65.0
+height = 158.0
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 31
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_5c4gn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -79,7 +81,8 @@ sprite_frames = SubResource("SpriteFrames_eg8r4")
 animation = &"down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_xxqrt")
+position = Vector2(4, 4)
+shape = SubResource("CapsuleShape2D_bliou")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
@@ -95,5 +98,9 @@ position = Vector2(-51, 9)
 
 [node name="Marker2D3" type="Marker2D" parent="WandStartPositions"]
 position = Vector2(-51, 11)
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["player"]]
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

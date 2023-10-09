@@ -11,5 +11,7 @@ script = ExtResource("1_dufp5")
 
 [node name="LifeContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 39.0
+offset_top = 26.0
+offset_right = 79.0
+offset_bottom = 66.0
