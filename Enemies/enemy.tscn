@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ujcu01krltjm"]
+[gd_scene load_steps=13 format=3 uid="uid://ujcu01krltjm"]
 
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_kt0yw"]
 [ext_resource type="Texture2D" uid="uid://ybngj7l2iemy" path="res://Art/EnemySprites/BookFly_MoveForwards.png" id="2_yot4o"]
@@ -54,15 +54,19 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m7urj"]
-radius = 2.9
-height = 7.8
+radius = 2.05
+height = 6.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4mw1t"]
+radius = 73.0
+height = 204.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xdt1j"]
 radius = 700.035
 
 [node name="BookEnemy" type="CharacterBody2D" groups=["mob"]]
-collision_layer = 5
-collision_mask = 7
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_kt0yw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -72,14 +76,23 @@ sprite_frames = SubResource("SpriteFrames_dentt")
 frame = 1
 frame_progress = 0.908127
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 5)
 rotation = 1.5708
 scale = Vector2(20, 20)
 shape = SubResource("CapsuleShape2D_m7urj")
 
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(2.08165e-12, 7)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4mw1t")
+
 [node name="detection_area" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]

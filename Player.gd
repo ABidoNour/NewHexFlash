@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 
 @export var speed : float = 700
+@export var maxHealth = 3
+@onready var health = maxHealth
 var default_wand_scene: PackedScene = preload("res://Projectiles/wand.tscn")
 
 signal wand(pos, direction)
@@ -15,6 +17,7 @@ const SPRITE_MAP = {
 }
 
 func _process(delta):
+	# print(health)
 	if velocity.length() > 0:
 		$AnimatedSprite2D.play()
 	else:
@@ -59,3 +62,7 @@ func _physics_process(_delta):
 #adds a wait time before player can shoot again of 0.5s
 func _on_timer_timeout():
 	can_wand = true
+
+
+func _on_hurt_box_area_entered(area):
+	health -=1

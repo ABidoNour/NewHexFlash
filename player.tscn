@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5k1n2mfvw7hc"]
+[gd_scene load_steps=15 format=3 uid="uid://b5k1n2mfvw7hc"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_5c4gn"]
 [ext_resource type="Texture2D" uid="uid://bqdxsmyql3uv3" path="res://Art/PlayerSprites/PrototypeDown.png" id="2_ft45p"]
@@ -66,7 +66,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bliou"]
-radius = 65.0
+radius = 54.0
+height = 132.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f0rk3"]
+radius = 63.0
 height = 158.0
 
 [sub_resource type="AudioStreamWAV" id="AudioStreamWAV_4giau"]
@@ -75,8 +79,7 @@ format = 1
 stereo = true
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
 script = ExtResource("1_5c4gn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -85,9 +88,17 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_eg8r4")
 animation = &"down"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(4, 4)
 shape = SubResource("CapsuleShape2D_bliou")
+
+[node name="AreaHurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="HurtBox" type="CollisionShape2D" parent="AreaHurtBox"]
+position = Vector2(4, 4)
+shape = SubResource("CapsuleShape2D_f0rk3")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
@@ -112,4 +123,5 @@ position_smoothing_enabled = true
 stream = SubResource("AudioStreamWAV_4giau")
 volume_db = -10.0
 
+[connection signal="area_entered" from="AreaHurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
