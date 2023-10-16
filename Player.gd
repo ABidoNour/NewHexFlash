@@ -7,6 +7,7 @@ extends CharacterBody2D
 var default_wand_scene: PackedScene = preload("res://Projectiles/wand.tscn")
 
 signal wand(pos, direction)
+signal health_changed
 
 var can_wand: bool = true
 
@@ -17,6 +18,9 @@ const SPRITE_MAP = {
 }
 
 func _process(delta):
+	if health <= 0:
+		player_death()
+	
 	# print(health)
 	if velocity.length() > 0:
 		$AnimatedSprite2D.play()
@@ -66,3 +70,8 @@ func _on_timer_timeout():
 
 func _on_hurt_box_area_entered(area):
 	health -=1
+	health_changed.emit(health)
+	
+func player_death():
+	queue_free()
+	get_tree().change_scene_to_file("res://MainMenu/mainMenuBido.tscn")

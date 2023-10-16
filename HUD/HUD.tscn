@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ht504qi0xm0d"]
+[gd_scene load_steps=3 format=3 uid="uid://ht504qi0xm0d"]
 
 [ext_resource type="Script" path="res://HUD/HUD.gd" id="1_dufp5"]
+[ext_resource type="PackedScene" uid="uid://dp6elxgnd3kii" path="res://heart_container.tscn" id="2_sax3l"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -9,9 +10,5 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_dufp5")
 
-[node name="LifeContainer" type="HBoxContainer" parent="."]
+[node name="HeartContainer" parent="." instance=ExtResource("2_sax3l")]
 layout_mode = 0
-offset_left = 39.0
-offset_top = 26.0
-offset_right = 79.0
-offset_bottom = 66.0

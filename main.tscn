@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://b5k1n2mfvw7hc" path="res://player.tscn" id="1_poj7j"]
 [ext_resource type="Script" path="res://main.gd" id="1_qlirn"]
 [ext_resource type="Texture2D" uid="uid://cujglr33cekur" path="res://Art/Void.png" id="3_xofek"]
-[ext_resource type="PackedScene" uid="uid://ht504qi0xm0d" path="res://HUD/HUD.tscn" id="4_re8rq"]
 [ext_resource type="Texture2D" uid="uid://d2cino0m5vtyi" path="res://Art/BasicTileSheets_scaled_4x_pngcrushed.png" id="4_xle4i"]
+[ext_resource type="PackedScene" uid="uid://dp6elxgnd3kii" path="res://heart_container.tscn" id="6_2wny4"]
 [ext_resource type="AudioStream" uid="uid://clmcpkmrjm4mj" path="res://Audio/alexander-nakarada-chase(chosic.com).mp3" id="6_nv27e"]
 [ext_resource type="PackedScene" uid="uid://ujcu01krltjm" path="res://Enemies/enemy.tscn" id="8_jayxu"]
 
@@ -107,7 +107,11 @@ position = Vector2(638, 447)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("4_re8rq")]
+[node name="HeartContainer" parent="CanvasLayer" instance=ExtResource("6_2wny4")]
+offset_left = 26.0
+offset_top = 9.0
+offset_right = 324.0
+offset_bottom = 102.0
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_nv27e")
