@@ -10,6 +10,7 @@ signal wand(pos, direction)
 signal health_changed
 
 var can_wand: bool = true
+var invincible : bool = false
 
 const SPRITE_MAP = {
 	Vector2.RIGHT : preload("res://Art/PlayerSprites/PrototypeSide.png"),
@@ -69,8 +70,14 @@ func _on_timer_timeout():
 
 
 func _on_hurt_box_area_entered(area):
-	health -=1
-	health_changed.emit(health)
+	if !invincible:
+		health -=1
+		health_changed.emit(health)
+	else:
+		invincible = true
+		$PlayerInvincibilityPeriod.start()
+		invincible = false
+		
 	
 func player_death():
 	queue_free()

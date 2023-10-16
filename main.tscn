@@ -56,8 +56,8 @@ script = ExtResource("1_qlirn")
 
 [node name="Void" type="Sprite2D" parent="."]
 texture_repeat = 2
-position = Vector2(568, -230)
-scale = Vector2(2.20932, 3.41141)
+position = Vector2(2972.5, -3202.5)
+scale = Vector2(3.67405, 5.41377)
 texture = ExtResource("3_xofek")
 region_enabled = true
 region_rect = Rect2(-1780.03, -1629.99, 5599.86, 2963.69)
@@ -73,6 +73,18 @@ layer_0/tile_data = PackedInt32Array(458746, 0, 0, 458747, 0, 0, 458748, 0, 0, 4
 [node name="BookEnemy" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(3932, -1308)
 
+[node name="BookEnemy10" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(4652, -1327)
+
+[node name="BookEnemy11" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(4234, -1252)
+
+[node name="BookEnemy12" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(3421, -1248)
+
+[node name="BookEnemy13" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(3421, -1248)
+
 [node name="BookEnemy9" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(3075, -1263)
 
@@ -86,7 +98,88 @@ position = Vector2(3066, -2681)
 position = Vector2(2857, 131)
 
 [node name="BookEnemy8" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3858, -234)
+position = Vector2(3944, -319)
+
+[node name="BookEnemy14" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(3265, -1553)
+
+[node name="BookEnemy15" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(3634, -1695)
+
+[node name="BookEnemy16" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(4093, -1870)
+
+[node name="BookEnemy17" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(3481, -2090)
+
+[node name="BookEnemy18" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(3958, -2105)
+
+[node name="BookEnemy19" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(4570, -1825)
+
+[node name="BookEnemy20" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(4268, -1553)
+
+[node name="BookEnemy21" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(4481, -2168)
+
+[node name="BookEnemy22" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(4037, -2384)
+
+[node name="BookEnemy23" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(3486, -2389)
+
+[node name="BookEnemy24" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(3098, -2053)
+
+[node name="BookEnemy25" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(3379, -2568)
+
+[node name="BookEnemy26" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(3553, -3107)
+
+[node name="BookEnemy27" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(3530, -3673)
+
+[node name="BookEnemy28" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(3162, -3956)
+
+[node name="BookEnemy29" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(3162, -3956)
+
+[node name="BookEnemy30" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(2573, -3915)
+
+[node name="BookEnemy31" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(1854, -3982)
+
+[node name="BookEnemy32" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(1424, -3457)
+
+[node name="BookEnemy33" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(1106, -4257)
+
+[node name="BookEnemy34" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(1455, -5095)
+
+[node name="BookEnemy35" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(1059, -5400)
+
+[node name="BookEnemy36" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(1037, -3374)
+
+[node name="BookEnemy37" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(1429, -3060)
+
+[node name="BookEnemy38" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(1102, -2613)
+
+[node name="BookEnemy39" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(1506, -2252)
+
+[node name="BookEnemy40" parent="Enemies" instance=ExtResource("8_jayxu")]
+position = Vector2(1033, -2136)
 
 [node name="BookEnemy3" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(-135, -278)

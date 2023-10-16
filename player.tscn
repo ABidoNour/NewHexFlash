@@ -101,7 +101,7 @@ position = Vector2(4, 4)
 shape = SubResource("CapsuleShape2D_f0rk3")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.3
 one_shot = true
 
 [node name="Weapon" type="Node2D" parent="."]
@@ -122,6 +122,10 @@ position_smoothing_enabled = true
 [node name="FireCastSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamWAV_4giau")
 volume_db = -10.0
+
+[node name="PlayerInvincibilityPeriod" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="area_entered" from="AreaHurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
