@@ -20,5 +20,5 @@ func _on_exit_button_button_down():
 
 
 func _on_options_button_pressed():
-	#TODO
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://tutorial.tscn")
+	# Replace with function body.

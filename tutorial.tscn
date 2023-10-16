@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://jgpdcnvcg5my"]
+
+[ext_resource type="Script" path="res://tutorial.gd" id="1_lpr0q"]
+[ext_resource type="FontFile" uid="uid://2j4nwscbemuo" path="res://Art/Font/Adventurer (1).ttf" id="1_x32yo"]
+[ext_resource type="Texture2D" uid="uid://bqdxsmyql3uv3" path="res://Art/PlayerSprites/PrototypeDown.png" id="2_t4kfv"]
+[ext_resource type="Texture2D" uid="uid://d20yw182uhh3a" path="res://Art/PlayerSprites/PrototypeSide.png" id="3_vw48r"]
+[ext_resource type="Texture2D" uid="uid://c77kwsu2royx0" path="res://Art/EnemySprites/BookAttack.png" id="5_bmxaj"]
+
+[node name="Tutorial" type="CanvasLayer"]
+script = ExtResource("1_lpr0q")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.419608, 0.309804, 0.309804, 1)
+
+[node name="TextEdit4" type="TextEdit" parent="."]
+offset_left = 417.0
+offset_top = 334.0
+offset_right = 1086.0
+offset_bottom = 408.0
+theme_override_fonts/font = ExtResource("1_x32yo")
+theme_override_font_sizes/font_size = 30
+text = "Use your mighty wand to attack enemies by left  
+						clicking	with your mouse."
+
+[node name="TextEdit3" type="TextEdit" parent="."]
+offset_left = 424.0
+offset_top = 208.0
+offset_right = 1058.0
+offset_bottom = 292.0
+theme_override_fonts/font = ExtResource("1_x32yo")
+theme_override_font_sizes/font_size = 30
+text = "Traverse through the map using W,A,S,D or 
+                with the arrow keys."
+
+[node name="TextEdit2" type="TextEdit" parent="."]
+offset_left = 420.0
+offset_top = -2.0
+offset_right = 751.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("1_x32yo")
+theme_override_font_sizes/font_size = 45
+text = "      Tutorial"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(276, 233)
+scale = Vector2(3.29546, 3.20313)
+texture = ExtResource("2_t4kfv")
+hframes = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(331, 420)
+scale = Vector2(3.25992, 2.94922)
+texture = ExtResource("3_vw48r")
+hframes = 2
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(191, 430)
+scale = Vector2(2.80303, 2.71875)
+texture = ExtResource("5_bmxaj")
+hframes = 5
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 450.0
+offset_top = 420.0
+offset_right = 1039.0
+offset_bottom = 503.0
+theme_override_fonts/font = ExtResource("1_x32yo")
+theme_override_font_sizes/font_size = 30
+text = "Enemies will follow and attack you as long 
+                   as they are alive. "
+
+[node name="TextEdit5" type="TextEdit" parent="."]
+anchors_preset = -1
+anchor_right = 0.139
+anchor_bottom = 0.057
+offset_left = 1045.0
+offset_top = 675.0
+offset_right = 1102.08
+offset_bottom = 680.96
+theme_override_fonts/font = ExtResource("1_x32yo")
+theme_override_font_sizes/font_size = 20
+text = "Press \"q\" for Main Menu"

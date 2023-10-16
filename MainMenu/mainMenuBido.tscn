@@ -44,7 +44,7 @@ flat = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_xn16f")
 theme_override_font_sizes/font_size = 40
-text = "Options"
+text = "Tutorial"
 flat = true
 
 [node name="ExitButton" type="Button" parent="Buttons"]
