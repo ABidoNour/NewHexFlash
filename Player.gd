@@ -3,7 +3,9 @@ extends CharacterBody2D
 
 @export var speed : float = 700
 @export var maxHealth = 3
+@export var knockback_strength = 10000
 @onready var health = maxHealth
+@onready var effect_animation = $HurtEffect
 var default_wand_scene: PackedScene = preload("res://Projectiles/wand.tscn")
 
 signal wand(pos, direction)
@@ -18,7 +20,11 @@ const SPRITE_MAP = {
 	Vector2.UP : preload("res://Art/PlayerSprites/PrototypeSide.png"),
 }
 
+func _ready():
+	effect_animation.play("RESET")
+
 func _process(delta):
+	print(invincible)
 	if health <= 0:
 		player_death()
 	
@@ -72,13 +78,25 @@ func _on_timer_timeout():
 func _on_hurt_box_area_entered(area):
 	if !invincible:
 		health -=1
+		$DamageSound.play()
 		health_changed.emit(health)
-	else:
 		invincible = true
 		$PlayerInvincibilityPeriod.start()
-		invincible = false
+		knockback(area.owner.velocity)
+		effect_animation.play("hurtBlink")
+		
 		
 	
 func player_death():
 	queue_free()
 	get_tree().change_scene_to_file("res://MainMenu/mainMenuBido.tscn")
+
+
+func _on_player_invincibility_period_timeout():
+	invincible = false
+	effect_animation.play("RESET")
+	
+func knockback(enemy_velocity : Vector2):
+	var knockback_direction = (enemy_velocity - velocity).normalized() * knockback_strength
+	velocity = knockback_direction
+	move_and_slide()
