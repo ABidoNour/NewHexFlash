@@ -7,13 +7,13 @@ extends CharacterBody2D
 @onready var health = maxHealth
 @onready var effect_animation = $HurtEffect
 @onready var death_animation = $DeathEffect
-var default_wand_scene: PackedScene = preload("res://Projectiles/wand.tscn")
+var fireball_scene: PackedScene = preload("res://Projectiles/fireball.tscn")
 @export var weapon_damage = 1
 
-signal wand(pos, direction)
+signal fireball(pos, direction)
 signal health_changed
 
-var can_wand: bool = true
+var can_fireball: bool = true
 var invincible : bool = false
 var is_alive : bool = true
 
@@ -50,24 +50,24 @@ func _process(delta):
 		$AnimatedSprite2D.animation = "up"
 		$AnimatedSprite2D.flip_h = false
 	
-	# wand shooting input
-	if Input.is_action_pressed("primary action") and can_wand:
-		#randomly select a marker 2D for the wand blast to spawn
-		var wand_markers = $Weapon.get_children()
-		var selected_wand = wand_markers[randi() % wand_markers.size()]
+	# fireball shooting input
+	if Input.is_action_pressed("primary action") and can_fireball:
+		#randomly select a marker 2D for the fireball blast to spawn
+		var fireball_markers = $Weapon.get_children()
+		var selected_fireball = fireball_markers[randi() % fireball_markers.size()]
 		var player_direction = (get_global_mouse_position() - position).normalized()
-		can_wand = false
+		can_fireball = false
 		$Timer.start()
 		#emit the position we selected
-		_shoot(selected_wand.global_position, player_direction)
+		_shoot(selected_fireball.global_position, player_direction)
 		
 func _shoot(pos, direction):
-	var wand = default_wand_scene.instantiate()
-	wand.position = pos
-	wand.rotation_degrees = rad_to_deg(direction.angle())
-	wand.direction = direction
-	wand.damage = weapon_damage
-	owner.add_child(wand)
+	var fireball = fireball_scene.instantiate()
+	fireball.position = pos
+	fireball.rotation_degrees = rad_to_deg(direction.angle())
+	fireball.direction = direction
+	fireball.damage = weapon_damage
+	owner.add_child(fireball)
 	$FireCastSound.play()
 
 func _physics_process(_delta):
@@ -80,7 +80,7 @@ func _physics_process(_delta):
 
 #adds a wait time before player can shoot again of 0.5s
 func _on_timer_timeout():
-	can_wand = true
+	can_fireball = true
 
 func _on_hurt_box_area_entered(area):
 	if !invincible:
@@ -94,6 +94,7 @@ func _on_hurt_box_area_entered(area):
 	
 func player_death():
 	is_alive = false
+	
 	death_animation.play("Death")
 	$DeathTimer.start()
 	$DeathSound.play()

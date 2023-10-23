@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dkypn6r3x887q"]
 
-[ext_resource type="Script" path="res://Projectiles/wand.gd" id="1_52snx"]
-[ext_resource type="Texture2D" uid="uid://wy2dqnyqdd1f" path="res://Art/flames/flame_horizontal.png" id="1_k4vgn"]
+[ext_resource type="Script" path="res://Projectiles/fireball.gd" id="1_bcf1h"]
+[ext_resource type="Texture2D" uid="uid://wy2dqnyqdd1f" path="res://Art/flames/flame_horizontal.png" id="2_rm15h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1rkcj"]
 radius = 20.0
@@ -9,12 +9,12 @@ radius = 20.0
 [node name="Wand" type="Area2D" groups=["wand"]]
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("1_52snx")
+script = ExtResource("1_bcf1h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(9.53674e-07, 0)
 scale = Vector2(5.85417, 5.85417)
-texture = ExtResource("1_k4vgn")
+texture = ExtResource("2_rm15h")
 region_enabled = true
 region_rect = Rect2(0, 0, 12, 12)
 

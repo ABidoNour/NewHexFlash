@@ -210,5 +210,3 @@ offset_bottom = 102.0
 stream = ExtResource("6_nv27e")
 volume_db = -10.0
 autoplay = true
-
-[connection signal="wand" from="Player" to="." method="_on_player_wand"]

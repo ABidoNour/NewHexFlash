@@ -19,7 +19,6 @@ signal hit
 func _process(delta):
 	position += direction * speed * delta
 
-# Wand.gd
 func _ready():
 	# Add this instance to the 'projectiles' group
 	add_to_group("projectiles")
