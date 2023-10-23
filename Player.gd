@@ -6,13 +6,16 @@ extends CharacterBody2D
 @export var knockback_strength = 10000
 @onready var health = maxHealth
 @onready var effect_animation = $HurtEffect
+@onready var death_animation = $DeathEffect
 var default_wand_scene: PackedScene = preload("res://Projectiles/wand.tscn")
+@export var weapon_damage = 1
 
 signal wand(pos, direction)
 signal health_changed
 
 var can_wand: bool = true
 var invincible : bool = false
+var is_alive : bool = true
 
 const SPRITE_MAP = {
 	Vector2.RIGHT : preload("res://Art/PlayerSprites/PrototypeSide.png"),
@@ -24,7 +27,10 @@ func _ready():
 	effect_animation.play("RESET")
 
 func _process(delta):
-	if health <= 0:
+	if not is_alive:
+		return
+	
+	if health <= 0 and is_alive:
 		player_death()
 	
 	# print(health)
@@ -60,10 +66,13 @@ func _shoot(pos, direction):
 	wand.position = pos
 	wand.rotation_degrees = rad_to_deg(direction.angle())
 	wand.direction = direction
+	wand.damage = weapon_damage
 	owner.add_child(wand)
 	$FireCastSound.play()
 
 func _physics_process(_delta):
+	if not is_alive:
+		return
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction.normalized() * speed
 	
@@ -72,7 +81,6 @@ func _physics_process(_delta):
 #adds a wait time before player can shoot again of 0.5s
 func _on_timer_timeout():
 	can_wand = true
-
 
 func _on_hurt_box_area_entered(area):
 	if !invincible:
@@ -83,13 +91,15 @@ func _on_hurt_box_area_entered(area):
 		$PlayerInvincibilityPeriod.start()
 		knockback(area.owner.velocity)
 		effect_animation.play("hurtBlink")
-		
-		
 	
 func player_death():
+	is_alive = false
+	death_animation.play("Death")
+	$DeathTimer.start()
+	$DeathSound.play()
+	await $DeathTimer.timeout
 	queue_free()
 	get_tree().change_scene_to_file("res://MainMenu/mainMenuBido.tscn")
-
 
 func _on_player_invincibility_period_timeout():
 	invincible = false

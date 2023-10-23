@@ -17,7 +17,7 @@ func _ready():
 	
 
 func _physics_process(delta):
-	if chase_player:
+	if chase_player and player.is_alive:
 		direction = (player.position - position).normalized()
 		velocity = direction * speed
 		move_and_slide()
