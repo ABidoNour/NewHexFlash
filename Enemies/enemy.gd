@@ -7,9 +7,13 @@ var chase_player = false
 var maxhealth = 3
 var health = 3
 var healthbar 
+var health_pickup_scene = preload("res://health_pickup.tscn")
+var random
 
 
 func _ready():
+	random = RandomNumberGenerator.new()
+	random.randomize()
 	$AnimatedSprite2D.play("default")
 	healthbar = $UIHealthbar
 	healthbar.max_value = maxhealth
@@ -42,6 +46,11 @@ func update_health():
 func take_damage(damage_value : int):
 	health -= damage_value
 	if health <= 0:
+		var drop_pickup = (randi_range(1,4) == 1) # 1 in 4 chance
+		if drop_pickup:
+			var health_pickup = health_pickup_scene.instantiate()
+			health_pickup.position = global_position
+			owner.call_deferred("add_child", health_pickup)
 		queue_free()
 	
 	

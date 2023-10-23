@@ -24,7 +24,6 @@ func _ready():
 	add_to_group("projectiles")
 
 
-func _on_body_entered(body):
-	if body.is_in_group("mob"):
-		body.take_damage(damage)
+func _on_area_entered(area):
+	area.get_parent().take_damage(damage)
 	queue_free()

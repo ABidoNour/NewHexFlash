@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://d365k5dp2fsnd"]
+
+[ext_resource type="Script" path="res://health_pickup.gd" id="1_dia2m"]
+[ext_resource type="Texture2D" uid="uid://b8e5pioml66sj" path="res://Art/Pickups/Healthpickup.png" id="2_w3kuq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qanjt"]
+size = Vector2(89, 93)
+
+[sub_resource type="Animation" id="Animation_g8ush"]
+resource_name = "Bobbing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1.25, 1.25), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1xxdl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.25, 1.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_od3ge"]
+_data = {
+"Bobbing": SubResource("Animation_g8ush"),
+"RESET": SubResource("Animation_1xxdl")
+}
+
+[node name="HealthPickup" type="Area2D"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(1.25, 1.25)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_dia2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(4, 4)
+texture = ExtResource("2_w3kuq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qanjt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Bobbing"
+libraries = {
+"": SubResource("AnimationLibrary_od3ge")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

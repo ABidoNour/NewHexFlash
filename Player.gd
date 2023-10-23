@@ -110,3 +110,8 @@ func knockback(enemy_velocity : Vector2):
 	var knockback_direction = (enemy_velocity - velocity).normalized() * knockback_strength
 	velocity = knockback_direction
 	move_and_slide()
+	
+func add_health():
+	if health < maxHealth:
+		health += 1
+		health_changed.emit(health)
