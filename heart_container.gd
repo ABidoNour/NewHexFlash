@@ -1,5 +1,11 @@
 extends HBoxContainer
 @onready var HeartGuiScene = preload("res://heart_gui.tscn")
+@onready var player = owner.get_node("Player")
+
+func _ready():
+	set_max_hearts(player.maxHealth)
+	update_hearts(player.health)
+	player.health_changed.connect(update_hearts)
 
 func set_max_hearts(max_hearts : int):
 	for i in range(max_hearts):
