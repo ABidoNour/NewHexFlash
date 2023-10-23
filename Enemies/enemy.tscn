@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://ujcu01krltjm"]
+[gd_scene load_steps=15 format=3 uid="uid://ujcu01krltjm"]
 
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_kt0yw"]
 [ext_resource type="Texture2D" uid="uid://ybngj7l2iemy" path="res://Art/EnemySprites/BookFly_MoveForwards.png" id="2_yot4o"]
+[ext_resource type="Texture2D" uid="uid://cnj70e5ms3css" path="res://Art/UIArt/EnemyHealthBar.png" id="3_be3up"]
+[ext_resource type="Texture2D" uid="uid://dmb7y20rb4p3q" path="res://Art/UIArt/EnemyHealthBar-sheet.png" id="4_jya1g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ko21j"]
 atlas = ExtResource("2_yot4o")
@@ -98,6 +100,21 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
 visible = false
 shape = SubResource("CircleShape2D_xdt1j")
+
+[node name="UIHealthbar" type="TextureProgressBar" parent="."]
+offset_left = -58.0
+offset_top = 56.0
+offset_right = -29.0
+offset_bottom = 62.0
+scale = Vector2(4, 4)
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+texture_under = ExtResource("3_be3up")
+texture_progress = ExtResource("4_jya1g")
+texture_progress_offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

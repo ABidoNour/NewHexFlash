@@ -24,7 +24,6 @@ func _ready():
 	effect_animation.play("RESET")
 
 func _process(delta):
-	print(invincible)
 	if health <= 0:
 		player_death()
 	
