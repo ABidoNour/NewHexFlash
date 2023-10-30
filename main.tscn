@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bs5f5gskbvd4h"]
+[gd_scene load_steps=15 format=3 uid="uid://bs5f5gskbvd4h"]
 
 [ext_resource type="PackedScene" uid="uid://b5k1n2mfvw7hc" path="res://player.tscn" id="1_poj7j"]
 [ext_resource type="Script" path="res://main.gd" id="1_qlirn"]
@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://d2cino0m5vtyi" path="res://Art/BasicTileSheets_scaled_4x_pngcrushed.png" id="4_xle4i"]
 [ext_resource type="PackedScene" uid="uid://dp6elxgnd3kii" path="res://heart_container.tscn" id="6_2wny4"]
 [ext_resource type="AudioStream" uid="uid://clmcpkmrjm4mj" path="res://Audio/alexander-nakarada-chase(chosic.com).mp3" id="6_nv27e"]
+[ext_resource type="FontFile" uid="uid://2j4nwscbemuo" path="res://Art/Font/Adventurer (1).ttf" id="8_asawr"]
 [ext_resource type="PackedScene" uid="uid://bota11l8ry5of" path="res://boss_level_one.tscn" id="6_rjaru"]
 [ext_resource type="PackedScene" uid="uid://ujcu01krltjm" path="res://Enemies/enemy.tscn" id="8_jayxu"]
+[ext_resource type="Script" path="res://AcceptDialog.gd" id="9_jdwb0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ivha7"]
 resource_name = "floors"
@@ -52,6 +54,18 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_ivha7")
 sources/1 = SubResource("TileSetAtlasSource_p62ir")
 
+[sub_resource type="Theme" id="Theme_onj0c"]
+default_font = ExtResource("8_asawr")
+default_font_size = 23
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ra81f"]
+bg_color = Color(0.458824, 0.34902, 0.517647, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tf5go"]
 size = Vector2(161, 848)
 
@@ -60,7 +74,7 @@ script = ExtResource("1_qlirn")
 
 [node name="Void" type="Sprite2D" parent="."]
 texture_repeat = 2
-position = Vector2(2972.5, -3202.5)
+position = Vector2(3074, -3205)
 scale = Vector2(3.67405, 5.41377)
 texture = ExtResource("3_xofek")
 region_enabled = true
@@ -77,23 +91,11 @@ layer_0/tile_data = PackedInt32Array(458746, 0, 0, 458747, 0, 0, 458748, 0, 0, 4
 [node name="BookEnemy10" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(4652, -1327)
 
-[node name="BookEnemy11" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(4234, -1252)
-
-[node name="BookEnemy12" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3421, -1248)
-
-[node name="BookEnemy13" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3421, -1248)
-
 [node name="BookEnemy4" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(4729, -2527)
 
 [node name="BookEnemy5" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(3066, -2681)
-
-[node name="BookEnemy2" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(2857, 131)
 
 [node name="BookEnemy8" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(3944, -319)
@@ -144,6 +146,7 @@ position = Vector2(-520, -256)
 position = Vector2(397, 337)
 
 [node name="Projectiles" type="Node2D" parent="."]
+position = Vector2(-3, 2)
 
 [node name="Boss" parent="." instance=ExtResource("6_rjaru")]
 position = Vector2(1216, -5406)
@@ -151,15 +154,31 @@ position = Vector2(1216, -5406)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HeartContainer" parent="CanvasLayer" instance=ExtResource("6_2wny4")]
-offset_left = 26.0
-offset_top = 9.0
-offset_right = 324.0
-offset_bottom = 102.0
+offset_left = 24.0
+offset_top = 4.0
+offset_right = 321.0
+offset_bottom = 97.0
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_nv27e")
 volume_db = -10.0
 autoplay = true
+
+[node name="Tutorial Box" type="CanvasLayer" parent="."]
+offset = Vector2(500, 2.08165e-12)
+transform = Transform2D(1, 0, 0, 1, 500, 2.08165e-12)
+
+[node name="AcceptDialog" type="AcceptDialog" parent="Tutorial Box"]
+title = "Welcome!"
+position = Vector2i(700, 100)
+size = Vector2i(470, 133)
+visible = true
+theme = SubResource("Theme_onj0c")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ra81f")
+dialog_text = "             Move: WASD or Direction Keys
+  Attack: Left-click in the direction of enemy
+                        Good Luck!"
+script = ExtResource("9_jdwb0")
 
 [node name="BossActiveTrigger" type="Area2D" parent="."]
 collision_layer = 0

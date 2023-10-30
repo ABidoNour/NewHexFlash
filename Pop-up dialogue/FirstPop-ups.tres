@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b57x6n2ukw4dm"]
+
+[ext_resource type="FontFile" uid="uid://2j4nwscbemuo" path="res://Art/Font/Adventurer (1).ttf" id="1_pu1ah"]
+
+[resource]
+default_font = ExtResource("1_pu1ah")
