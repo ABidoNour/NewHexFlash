@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bs5f5gskbvd4h"]
+[gd_scene load_steps=13 format=3 uid="uid://bs5f5gskbvd4h"]
 
 [ext_resource type="PackedScene" uid="uid://b5k1n2mfvw7hc" path="res://player.tscn" id="1_poj7j"]
 [ext_resource type="Script" path="res://main.gd" id="1_qlirn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d2cino0m5vtyi" path="res://Art/BasicTileSheets_scaled_4x_pngcrushed.png" id="4_xle4i"]
 [ext_resource type="PackedScene" uid="uid://dp6elxgnd3kii" path="res://heart_container.tscn" id="6_2wny4"]
 [ext_resource type="AudioStream" uid="uid://clmcpkmrjm4mj" path="res://Audio/alexander-nakarada-chase(chosic.com).mp3" id="6_nv27e"]
+[ext_resource type="PackedScene" uid="uid://bota11l8ry5of" path="res://boss_level_one.tscn" id="6_rjaru"]
 [ext_resource type="PackedScene" uid="uid://ujcu01krltjm" path="res://Enemies/enemy.tscn" id="8_jayxu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ivha7"]
@@ -51,6 +52,9 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_ivha7")
 sources/1 = SubResource("TileSetAtlasSource_p62ir")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tf5go"]
+size = Vector2(161, 848)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qlirn")
 
@@ -70,9 +74,6 @@ layer_0/tile_data = PackedInt32Array(458746, 0, 0, 458747, 0, 0, 458748, 0, 0, 4
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="BookEnemy" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3932, -1308)
-
 [node name="BookEnemy10" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(4652, -1327)
 
@@ -84,9 +85,6 @@ position = Vector2(3421, -1248)
 
 [node name="BookEnemy13" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(3421, -1248)
-
-[node name="BookEnemy9" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3075, -1263)
 
 [node name="BookEnemy4" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(4729, -2527)
@@ -103,38 +101,17 @@ position = Vector2(3944, -319)
 [node name="BookEnemy14" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(3265, -1553)
 
-[node name="BookEnemy15" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3634, -1695)
-
-[node name="BookEnemy16" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(4093, -1870)
-
-[node name="BookEnemy17" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3481, -2090)
-
-[node name="BookEnemy18" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3958, -2105)
-
 [node name="BookEnemy19" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(4570, -1825)
 
 [node name="BookEnemy20" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(4268, -1553)
 
-[node name="BookEnemy21" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(4481, -2168)
-
-[node name="BookEnemy22" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(4037, -2384)
-
 [node name="BookEnemy23" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(3486, -2389)
 
 [node name="BookEnemy24" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(3098, -2053)
-
-[node name="BookEnemy25" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3379, -2568)
 
 [node name="BookEnemy26" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(3553, -3107)
@@ -151,36 +128,6 @@ position = Vector2(3162, -3956)
 [node name="BookEnemy30" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(2573, -3915)
 
-[node name="BookEnemy31" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(1854, -3982)
-
-[node name="BookEnemy32" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(1424, -3457)
-
-[node name="BookEnemy33" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(1106, -4257)
-
-[node name="BookEnemy34" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(1455, -5095)
-
-[node name="BookEnemy35" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(1059, -5400)
-
-[node name="BookEnemy36" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(1037, -3374)
-
-[node name="BookEnemy37" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(1429, -3060)
-
-[node name="BookEnemy38" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(1102, -2613)
-
-[node name="BookEnemy39" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(1506, -2252)
-
-[node name="BookEnemy40" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(1033, -2136)
-
 [node name="BookEnemy3" parent="Enemies" instance=ExtResource("8_jayxu")]
 position = Vector2(-135, -278)
 
@@ -194,9 +141,12 @@ position = Vector2(921, -217)
 position = Vector2(-520, -256)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_poj7j")]
-position = Vector2(638, 447)
+position = Vector2(397, 337)
 
 [node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Boss" parent="." instance=ExtResource("6_rjaru")]
+position = Vector2(1216, -5406)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -210,3 +160,14 @@ offset_bottom = 102.0
 stream = ExtResource("6_nv27e")
 volume_db = -10.0
 autoplay = true
+
+[node name="BossActiveTrigger" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossActiveTrigger"]
+position = Vector2(1789, -3984)
+shape = SubResource("RectangleShape2D_tf5go")
+
+[connection signal="area_entered" from="BossActiveTrigger" to="." method="_on_boss_active_trigger_area_entered"]
+[connection signal="body_entered" from="BossActiveTrigger" to="." method="_on_boss_active_trigger_body_entered"]

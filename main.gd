@@ -11,6 +11,6 @@ func _process(_delta):
 	pass
 
 
-# TAKE THIS OUT OF MAIN
-
-
+func _on_boss_active_trigger_body_entered(body):
+	$Boss.is_agr = true
+	$BossActiveTrigger.queue_free()

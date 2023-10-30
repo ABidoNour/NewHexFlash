@@ -25,5 +25,7 @@ func _ready():
 
 
 func _on_area_entered(area):
+	if area.is_in_group("projectile"):
+		return
 	area.get_parent().take_damage(damage)
 	queue_free()

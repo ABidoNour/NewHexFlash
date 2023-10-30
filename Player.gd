@@ -26,7 +26,7 @@ const SPRITE_MAP = {
 func _ready():
 	effect_animation.play("RESET")
 
-func _process(delta):
+func _process(_delta):
 	if not is_alive:
 		return
 	
@@ -89,7 +89,8 @@ func _on_hurt_box_area_entered(area):
 		health_changed.emit(health)
 		invincible = true
 		$PlayerInvincibilityPeriod.start()
-		knockback(area.owner.velocity)
+		if !area.is_in_group("projectile"):
+			knockback(area.owner.velocity)
 		effect_animation.play("hurtBlink")
 	
 func player_death():
