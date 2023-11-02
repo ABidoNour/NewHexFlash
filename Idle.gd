@@ -3,7 +3,7 @@ class_name IdleState
 
 @onready var idle_timer : Timer = $"../../IdleTimer"
 var is_mid_idle = false
-var states = ['Shoot', 'Dash']
+var states = ['Shoot', 'Dash', 'BulletHell']
 
 # Called when the node enters the scene tree for the first time.
 func transition():

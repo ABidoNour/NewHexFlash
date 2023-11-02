@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bota11l8ry5of"]
+[gd_scene load_steps=22 format=3 uid="uid://bota11l8ry5of"]
 
 [ext_resource type="Texture2D" uid="uid://62858d8lhofh" path="res://Art/PlayerSprites/BaseSprite.png" id="1_isnvf"]
 [ext_resource type="Script" path="res://boss_level_one.gd" id="1_quwi3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://FiniteStateMachine.gd" id="3_0lfhr"]
 [ext_resource type="Script" path="res://Idle.gd" id="5_ei8tw"]
 [ext_resource type="Script" path="res://Shoot.gd" id="6_ubco3"]
+[ext_resource type="Script" path="res://BulletHell.gd" id="7_ay5r3"]
 [ext_resource type="Script" path="res://Dash.gd" id="7_ktvk2"]
 [ext_resource type="Texture2D" uid="uid://cnj70e5ms3css" path="res://Art/UIArt/EnemyHealthBar.png" id="8_odu0u"]
 [ext_resource type="Texture2D" uid="uid://dmb7y20rb4p3q" path="res://Art/UIArt/EnemyHealthBar-sheet.png" id="9_6yaom"]
@@ -112,6 +113,8 @@ shape = SubResource("CapsuleShape2D_cm2q5")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collision_mask = 2
 
+[node name="Rotator" type="Node2D" parent="."]
+
 [node name="FiniteStateMachine" type="Node2D" parent="."]
 script = ExtResource("3_0lfhr")
 
@@ -122,6 +125,7 @@ script = ExtResource("5_ei8tw")
 script = ExtResource("6_ubco3")
 
 [node name="BulletHell" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("7_ay5r3")
 
 [node name="Dash" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("7_ktvk2")
@@ -130,6 +134,12 @@ script = ExtResource("7_ktvk2")
 
 [node name="ShootCooldownTimer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="BulletHellShootTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="BulletHellTimer" type="Timer" parent="."]
+wait_time = 6.0
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 4.0
@@ -159,4 +169,5 @@ texture_progress = ExtResource("9_6yaom")
 texture_progress_offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [connection signal="timeout" from="ShootCooldownTimer" to="FiniteStateMachine/Shoot" method="_on_shoot_cooldown_timer_timeout"]
+[connection signal="timeout" from="BulletHellShootTimer" to="FiniteStateMachine/BulletHell" method="_on_bullet_hell_shoot_timer_timeout"]
 [connection signal="timeout" from="DashCooldown" to="FiniteStateMachine/Dash" method="_on_timer_timeout"]
