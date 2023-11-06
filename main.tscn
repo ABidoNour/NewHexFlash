@@ -201,4 +201,5 @@ collision_mask = 2
 position = Vector2(1243, -4623)
 shape = SubResource("RectangleShape2D_tf5go")
 
+[connection signal="body_entered" from="TileMap/Door" to="TileMap/Door" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="BossActiveTrigger" to="." method="_on_boss_active_trigger_body_entered"]
