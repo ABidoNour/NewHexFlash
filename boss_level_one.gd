@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 @onready var ray_cast = $RayCast2D
-@onready var player = get_parent().get_node('Player')
+@onready var player = owner.get_node('Player')
+var random = RandomNumberGenerator.new()
 
 
 
@@ -16,10 +17,11 @@ func _ready():
 	health = maxhealth
 	healthbar = $UIHealthbar
 	healthbar.max_value = maxhealth
+	random.randomize()
 
 func _process(_delta):
-	if player.is_alive == false:
-		is_agr = false
+	if not player.is_alive:
+		is_agr
 	if not is_agr:
 		return
 	direction = (player.position - position).normalized()
@@ -31,6 +33,8 @@ func take_damage(damage_value):
 	if health <= 0:
 		queue_free()
 		
+func start():
+	$FiniteStateMachine/Idle.transition()
 	
 	
 	

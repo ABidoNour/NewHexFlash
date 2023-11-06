@@ -15,3 +15,6 @@ func change_state(state):
  
 	previous_state.exit()
 	previous_state = current_state
+	
+func _process(delta):
+	print(current_state.name)

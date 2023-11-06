@@ -11,6 +11,7 @@ extends Node2D
 		#game_paused = value
 		#emit_signal("toggle_game_paused", game_paused)
 # Called when the node enters the scene tree for the first time.
+
 func _ready():
 	pass
 
@@ -29,4 +30,5 @@ func _process(_delta):
 
 func _on_boss_active_trigger_body_entered(body):
 	$Boss.is_agr = true
+	$Boss.start()
 	$BossActiveTrigger.queue_free()

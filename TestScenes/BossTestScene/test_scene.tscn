@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cnn07xdxk2kcu"]
 
-[ext_resource type="Script" path="res://test_scene.gd" id="1_bgoeu"]
+[ext_resource type="Script" path="res://TestScenes/BossTestScene/test_scene.gd" id="1_bgoeu"]
 [ext_resource type="PackedScene" uid="uid://b5k1n2mfvw7hc" path="res://player.tscn" id="1_wqgx8"]
 [ext_resource type="PackedScene" uid="uid://bota11l8ry5of" path="res://boss_level_one.tscn" id="2_wxn3e"]
 

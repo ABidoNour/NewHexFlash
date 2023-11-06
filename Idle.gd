@@ -5,10 +5,14 @@ class_name IdleState
 var is_mid_idle = false
 var states = ['Shoot', 'Dash', 'BulletHell']
 
-# Called when the node enters the scene tree for the first time.
 func transition():
-	if not owner.is_agr or is_mid_idle:
+	if owner.is_agr == false:
+		print("Is not agr")
 		return
+	if is_mid_idle:
+		print("Mid IDLE")
+		return
+	print("Reached IDLE")
 	var random_choice = states[randi_range(0,states.size()-1)]
 	print(random_choice)
 	is_mid_idle = true

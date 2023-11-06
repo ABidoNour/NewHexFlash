@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://bs5f5gskbvd4h"]
+[gd_scene load_steps=18 format=3 uid="uid://bs5f5gskbvd4h"]
 
 [ext_resource type="PackedScene" uid="uid://b5k1n2mfvw7hc" path="res://player.tscn" id="1_poj7j"]
 [ext_resource type="Script" path="res://main.gd" id="1_qlirn"]
 [ext_resource type="Texture2D" uid="uid://cujglr33cekur" path="res://Art/Void.png" id="3_xofek"]
 [ext_resource type="Texture2D" uid="uid://d2cino0m5vtyi" path="res://Art/BasicTileSheets_scaled_4x_pngcrushed.png" id="4_xle4i"]
+[ext_resource type="PackedScene" uid="uid://onn0t1bctei0" path="res://Enemies/enemy_wand.tscn" id="5_wob8h"]
 [ext_resource type="PackedScene" uid="uid://dp6elxgnd3kii" path="res://heart_container.tscn" id="6_2wny4"]
 [ext_resource type="AudioStream" uid="uid://clmcpkmrjm4mj" path="res://Audio/alexander-nakarada-chase(chosic.com).mp3" id="6_nv27e"]
 [ext_resource type="PackedScene" uid="uid://bota11l8ry5of" path="res://boss_level_one.tscn" id="6_rjaru"]
@@ -67,7 +68,7 @@ border_width_bottom = 5
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tf5go"]
-size = Vector2(161, 848)
+size = Vector2(1283.5, 225)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qlirn")
@@ -88,68 +89,72 @@ layer_0/tile_data = PackedInt32Array(458746, 0, 0, 458747, 0, 0, 458748, 0, 0, 4
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="BookEnemy10" parent="Enemies" instance=ExtResource("8_jayxu")]
+[node name="Books" type="Node2D" parent="Enemies"]
+
+[node name="BookEnemy10" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
 position = Vector2(4652, -1327)
 
-[node name="BookEnemy4" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(4729, -2527)
+[node name="BookEnemy4" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
+position = Vector2(4360, -2253)
 
-[node name="BookEnemy5" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3066, -2681)
+[node name="BookEnemy14" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
+position = Vector2(3604, -1507)
 
-[node name="BookEnemy8" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3944, -319)
+[node name="BookEnemy23" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
+position = Vector2(3700, -2137)
 
-[node name="BookEnemy14" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3265, -1553)
-
-[node name="BookEnemy19" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(4570, -1825)
-
-[node name="BookEnemy20" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(4268, -1553)
-
-[node name="BookEnemy23" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3486, -2389)
-
-[node name="BookEnemy24" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3098, -2053)
-
-[node name="BookEnemy26" parent="Enemies" instance=ExtResource("8_jayxu")]
+[node name="BookEnemy26" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
 position = Vector2(3553, -3107)
 
-[node name="BookEnemy27" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3530, -3673)
-
-[node name="BookEnemy28" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3162, -3956)
-
-[node name="BookEnemy29" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(3162, -3956)
-
-[node name="BookEnemy30" parent="Enemies" instance=ExtResource("8_jayxu")]
+[node name="BookEnemy30" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
 position = Vector2(2573, -3915)
 
-[node name="BookEnemy3" parent="Enemies" instance=ExtResource("8_jayxu")]
+[node name="BookEnemy31" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
+position = Vector2(1483, -2855)
+
+[node name="BookEnemy3" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
 position = Vector2(-135, -278)
 
-[node name="BookEnemy6" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(-391, 781)
+[node name="BookEnemy6" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
+position = Vector2(919, 738)
 
-[node name="BookEnemy7" parent="Enemies" instance=ExtResource("8_jayxu")]
+[node name="BookEnemy7" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
 position = Vector2(921, -217)
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("8_jayxu")]
-position = Vector2(-520, -256)
+[node name="Enemy" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
+position = Vector2(2013, 61)
+
+[node name="Wands" type="Node2D" parent="Enemies"]
+
+[node name="enemy_wand" parent="Enemies/Wands" instance=ExtResource("5_wob8h")]
+position = Vector2(3655, 106)
+
+[node name="enemy_wand2" parent="Enemies/Wands" instance=ExtResource("5_wob8h")]
+position = Vector2(4013, -1266)
+
+[node name="enemy_wand3" parent="Enemies/Wands" instance=ExtResource("5_wob8h")]
+position = Vector2(3324, -2052)
+
+[node name="enemy_wand4" parent="Enemies/Wands" instance=ExtResource("5_wob8h")]
+position = Vector2(4384, -2643)
+
+[node name="enemy_wand5" parent="Enemies/Wands" instance=ExtResource("5_wob8h")]
+position = Vector2(3197, -3974)
+
+[node name="enemy_wand6" parent="Enemies/Wands" instance=ExtResource("5_wob8h")]
+position = Vector2(907, -2670)
+
+[node name="enemy_wand7" parent="Enemies/Wands" instance=ExtResource("5_wob8h")]
+position = Vector2(1419, -2052)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_poj7j")]
-position = Vector2(2223, -3913)
+position = Vector2(397, 337)
 
 [node name="Projectiles" type="Node2D" parent="."]
 position = Vector2(-3, 2)
 
 [node name="Boss" parent="." instance=ExtResource("6_rjaru")]
-position = Vector2(1216, -5406)
+position = Vector2(1234, -5010)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -185,8 +190,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossActiveTrigger"]
-position = Vector2(1789, -3984)
+position = Vector2(1243, -4623)
 shape = SubResource("RectangleShape2D_tf5go")
 
-[connection signal="area_entered" from="BossActiveTrigger" to="." method="_on_boss_active_trigger_area_entered"]
 [connection signal="body_entered" from="BossActiveTrigger" to="." method="_on_boss_active_trigger_body_entered"]

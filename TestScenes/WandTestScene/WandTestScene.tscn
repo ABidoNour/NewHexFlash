@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://djnu1yxq2ti2o"]
+
+[ext_resource type="PackedScene" uid="uid://b5k1n2mfvw7hc" path="res://player.tscn" id="1_fkxsm"]
+[ext_resource type="PackedScene" uid="uid://onn0t1bctei0" path="res://Enemies/enemy_wand.tscn" id="2_gxuff"]
+
+[node name="WandTestScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_fkxsm")]
+position = Vector2(330, 106)
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Node2D2"]
+
+[node name="enemy_wand" parent="Node2D2/Node2D" instance=ExtResource("2_gxuff")]
