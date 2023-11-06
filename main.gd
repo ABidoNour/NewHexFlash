@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var pause_menu = $PauseMenu
+@onready var pause_menu = $GUIPause/PauseMenu
 var paused = false
 
 
@@ -18,9 +18,8 @@ func pauseMenu():
 		pause_menu.show()
 		Engine.time_scale = 0
 
+
 	paused = !paused
-
-
 
 
 func _on_boss_active_trigger_body_entered(body):
