@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b5k1n2mfvw7hc" path="res://player.tscn" id="1_poj7j"]
 [ext_resource type="Script" path="res://main.gd" id="1_qlirn"]
+[ext_resource type="PackedScene" uid="uid://cpf6gyqdi0k65" path="res://pause_menu.tscn" id="2_50e7e"]
 [ext_resource type="Texture2D" uid="uid://cujglr33cekur" path="res://Art/Void.png" id="3_xofek"]
 [ext_resource type="Texture2D" uid="uid://d2cino0m5vtyi" path="res://Art/BasicTileSheets_scaled_4x_pngcrushed.png" id="4_xle4i"]
 [ext_resource type="PackedScene" uid="uid://onn0t1bctei0" path="res://Enemies/enemy_wand.tscn" id="5_wob8h"]
@@ -72,6 +73,8 @@ size = Vector2(1283.5, 225)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qlirn")
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_50e7e")]
 
 [node name="Void" type="Sprite2D" parent="."]
 texture_repeat = 2

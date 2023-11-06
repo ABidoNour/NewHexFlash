@@ -1,30 +1,25 @@
 extends Node2D
 
-#class_name Main
+@onready var pause_menu = $PauseMenu
+var paused = false
 
-#signal toggle_game_paused(is_paused : bool)
-
-#var game_paused : bool = false:
-	#get:
-		#return game_paused
-	#set(value):
-		#game_paused = value
-		#emit_signal("toggle_game_paused", game_paused)
-# Called when the node enters the scene tree for the first time.
-
-func _ready():
-	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
-	
-#func _input(event: InputEvent):
-	#if(event.is_action_pressed("ui_cancel")):
-		#var current_value : bool = get_tree().paused
-		#game_paused = !game_paused
-		
+	if Input.is_action_just_pressed("pause"):
+		pauseMenu()
+
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+
+	paused = !paused
+
 
 
 

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cg7u7kdh4803p"]
+
+[node name="gui_pause" type="CanvasLayer"]
+
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
