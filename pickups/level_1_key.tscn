@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdnsr71fgq33u"]
+
+[ext_resource type="Script" path="res://pickups/level_1_key.gd" id="1_0areq"]
+[ext_resource type="Texture2D" uid="uid://5sco8y7tgoxv" path="res://Art/Pickups/key.png" id="1_copea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmgnd"]
+size = Vector2(71, 65)
+
+[sub_resource type="Animation" id="Animation_g8ush"]
+resource_name = "Bobbing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1.25, 1.25), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1xxdl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.25, 1.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_od3ge"]
+_data = {
+"Bobbing": SubResource("Animation_g8ush"),
+"RESET": SubResource("Animation_1xxdl")
+}
+
+[node name="Level1Key" type="Area2D"]
+scale = Vector2(1.25, 1.25)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_0areq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, -0.5)
+shape = SubResource("RectangleShape2D_fmgnd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_copea")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Bobbing"
+libraries = {
+"": SubResource("AnimationLibrary_od3ge")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -16,6 +16,7 @@ signal health_changed
 var can_fireball: bool = true
 var invincible : bool = false
 var is_alive : bool = true
+var has_key : bool = false
 
 const SPRITE_MAP = {
 	Vector2.RIGHT : preload("res://Art/PlayerSprites/PrototypeSide.png"),

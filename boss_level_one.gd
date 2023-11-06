@@ -11,7 +11,8 @@ var direction = Vector2.RIGHT
 var is_agr = false
 var health = 15
 @export var maxhealth = 15
-var healthbar 
+var healthbar
+@onready var key_scene : PackedScene = preload("res://pickups/level_1_key.tscn")
 
 func _ready():
 	health = maxhealth
@@ -31,6 +32,9 @@ func _process(_delta):
 func take_damage(damage_value):
 	health -= damage_value
 	if health <= 0:
+		var key = key_scene.instantiate()
+		key.position = global_position
+		owner.call_deferred("add_child", key)
 		queue_free()
 		
 func start():
