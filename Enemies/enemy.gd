@@ -9,6 +9,9 @@ var health = 3
 var healthbar 
 var health_pickup_scene = preload("res://health_pickup.tscn")
 var random
+@onready var death_sound = $DeathSound
+@onready var death_timer = $DeathTimer
+var is_alive = true 
 
 
 func _ready():
@@ -18,14 +21,18 @@ func _ready():
 	healthbar = $UIHealthbar
 	healthbar.max_value = maxhealth
 	healthbar.visible = false
+
+
 	
 
 func _physics_process(delta):
-	if chase_player and player.is_alive:
+	if chase_player and player.is_alive and is_alive:
 		direction = (player.position - position).normalized()
 		velocity = direction * speed
 		move_and_slide()
 		update_health()
+	else:
+		velocity = Vector2.ZERO
 
 func _on_detection_area_body_entered(body):
 	player = body
@@ -45,12 +52,20 @@ func update_health():
 	
 func take_damage(damage_value : int):
 	health -= damage_value
-	if health <= 0:
+	if health <= 0 and is_alive:
+		is_alive = false
 		var drop_pickup = (randi_range(1,4) == 1) # 1 in 4 chance
 		if drop_pickup:
 			var health_pickup = health_pickup_scene.instantiate()
 			health_pickup.position = global_position
 			owner.call_deferred("add_child", health_pickup)
-		queue_free()
+		visible = false
+		death_sound.play()	
+		death_timer.start()
+#
+
 	
-	
+
+
+func _on_death_timer_timeout():
+	queue_free() # Replace with function body.
