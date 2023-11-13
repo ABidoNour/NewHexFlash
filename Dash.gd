@@ -22,7 +22,6 @@ func dash():
 	tween.tween_property(owner, "position", player.position, 1.0)
  
 func _on_timer_timeout():
-	print("WILL DASH")
 	dash()
  
 func enter():

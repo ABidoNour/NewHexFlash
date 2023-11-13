@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d2cino0m5vtyi" path="res://Art/BasicTileSheets_scaled_4x_pngcrushed.png" id="4_xle4i"]
 [ext_resource type="PackedScene" uid="uid://dp6elxgnd3kii" path="res://heart_container.tscn" id="6_2wny4"]
 [ext_resource type="AudioStream" uid="uid://clmcpkmrjm4mj" path="res://Audio/alexander-nakarada-chase(chosic.com).mp3" id="6_nv27e"]
-[ext_resource type="PackedScene" uid="uid://bota11l8ry5of" path="res://boss_level_one.tscn" id="6_rjaru"]
+[ext_resource type="PackedScene" path="res://boss_level_one.tscn" id="6_rjaru"]
 [ext_resource type="FontFile" uid="uid://2j4nwscbemuo" path="res://Art/Font/Adventurer (1).ttf" id="8_asawr"]
 [ext_resource type="PackedScene" uid="uid://ujcu01krltjm" path="res://Enemies/enemy.tscn" id="8_jayxu"]
 [ext_resource type="Script" path="res://AcceptDialog.gd" id="9_jdwb0"]
@@ -143,7 +143,7 @@ position = Vector2(921, -217)
 position = Vector2(-520, -256)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_poj7j")]
-position = Vector2(397, 337)
+position = Vector2(851, 470)
 
 [node name="Projectiles" type="Node2D" parent="."]
 position = Vector2(-3, 2)

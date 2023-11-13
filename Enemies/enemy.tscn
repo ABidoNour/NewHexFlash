@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://ujcu01krltjm"]
+[gd_scene load_steps=16 format=3 uid="uid://ujcu01krltjm"]
 
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_kt0yw"]
 [ext_resource type="Texture2D" uid="uid://ybngj7l2iemy" path="res://Art/EnemySprites/BookFly_MoveForwards.png" id="2_yot4o"]
 [ext_resource type="Texture2D" uid="uid://cnj70e5ms3css" path="res://Art/UIArt/EnemyHealthBar.png" id="3_be3up"]
 [ext_resource type="Texture2D" uid="uid://dmb7y20rb4p3q" path="res://Art/UIArt/EnemyHealthBar-sheet.png" id="4_jya1g"]
+[ext_resource type="AudioStream" uid="uid://b71m47clc24h8" path="res://Audio/new_death_sound.wav" id="5_45lwi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ko21j"]
 atlas = ExtResource("2_yot4o")
@@ -116,5 +117,13 @@ texture_under = ExtResource("3_be3up")
 texture_progress = ExtResource("4_jya1g")
 texture_progress_offset = Vector2(2.08165e-12, 2.08165e-12)
 
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_45lwi")
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

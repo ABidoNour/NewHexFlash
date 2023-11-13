@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d365k5dp2fsnd"]
+[gd_scene load_steps=8 format=3 uid="uid://d365k5dp2fsnd"]
 
 [ext_resource type="Script" path="res://health_pickup.gd" id="1_dia2m"]
 [ext_resource type="Texture2D" uid="uid://b8e5pioml66sj" path="res://Art/Pickups/Healthpickup.png" id="2_w3kuq"]
+[ext_resource type="AudioStream" uid="uid://daag666g1edn6" path="res://Audio/health_pickup.wav" id="3_umlkc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qanjt"]
 size = Vector2(89, 93)
@@ -50,6 +51,10 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_dia2m")
 
+[node name="PickupTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(4, 4)
@@ -64,4 +69,8 @@ libraries = {
 "": SubResource("AnimationLibrary_od3ge")
 }
 
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_umlkc")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="PickupTimer" to="." method="_on_pickup_timer_timeout"]

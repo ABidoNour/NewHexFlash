@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var ray_cast = $RayCast2D
 @onready var player = get_parent().get_node('Player')
 
+
+
 var direction = Vector2.RIGHT
 @export var ray_cast_range : float = 400
 var is_agr = false
