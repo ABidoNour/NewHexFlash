@@ -1,7 +1,7 @@
 extends Control
 
-@onready var pause_menu = $PauseMenu2
-var paused = false
+#@onready var pause_menu = $PauseMenu2
+#var paused = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Buttons/StartButton.grab_focus()
@@ -9,18 +9,19 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("pause"):
-		pauseMenu()
+	#if Input.is_action_just_pressed("pause"):
+		#pauseMenu()
+	pass
 		
-func pauseMenu():
-	if paused:
-		pause_menu.hide()
-		Engine.time_scale = 1
-	else:
-		pause_menu.show()
-		Engine.time_scale = 0
+#func pauseMenu():
+	#if paused:
+		#pause_menu.hide()
+		#Engine.time_scale = 1
+	#else:
+		#pause_menu.show()
+		#Engine.time_scale = 0
 	
-	paused = !paused
+	#paused = !paused
 
 
 func _on_start_button_pressed():
