@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var pause_menu = $GUIPause/PauseMenu
 var paused = false
+@onready var animation_player = $Player/AnimatedSprite2D
 
 
 
@@ -9,16 +10,18 @@ var paused = false
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
+		
 
 func pauseMenu():
 	if paused:
-		pause_menu.hide()
+		pause_menu.hide() 
 		Engine.time_scale = 1
+		animation_player.play()
 	else:
 		pause_menu.show()
 		Engine.time_scale = 0
-
-
+		animation_player.stop()
+ 
 	paused = !paused
 
 

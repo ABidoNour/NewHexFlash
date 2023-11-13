@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cpf6gyqdi0k65" path="res://pause_menu.tscn" id="2_50e7e"]
 [ext_resource type="Texture2D" uid="uid://cujglr33cekur" path="res://Art/Void.png" id="3_xofek"]
 [ext_resource type="Texture2D" uid="uid://d2cino0m5vtyi" path="res://Art/BasicTileSheets_scaled_4x_pngcrushed.png" id="4_xle4i"]
-[ext_resource type="PackedScene" uid="uid://pa6ugctxce7f" path="res://door.tscn" id="5_ens5m"]
-[ext_resource type="PackedScene" uid="uid://onn0t1bctei0" path="res://Enemies/enemy_wand.tscn" id="5_wob8h"]
+[ext_resource type="PackedScene" path="res://door.tscn" id="5_ens5m"]
+[ext_resource type="PackedScene" path="res://Enemies/enemy_wand.tscn" id="5_wob8h"]
 [ext_resource type="PackedScene" uid="uid://dp6elxgnd3kii" path="res://heart_container.tscn" id="6_2wny4"]
 [ext_resource type="AudioStream" uid="uid://clmcpkmrjm4mj" path="res://Audio/alexander-nakarada-chase(chosic.com).mp3" id="6_nv27e"]
 [ext_resource type="PackedScene" uid="uid://bota11l8ry5of" path="res://boss_level_one.tscn" id="6_rjaru"]
@@ -159,6 +159,7 @@ position = Vector2(907, -2670)
 position = Vector2(1419, -2052)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_poj7j")]
+process_mode = 1
 position = Vector2(1393, -4325)
 
 [node name="Projectiles" type="Node2D" parent="."]
