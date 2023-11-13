@@ -17,4 +17,5 @@ func _on_body_entered(body):
 		$AnimatedSprite2D.set_frame(1)
 		$Timer.start()
 		await $Timer.timeout
-		get_tree().change_scene_to_file("res://MainMenu/mainMenuBido.tscn")
+		var level = "res://Levels/level_2.tscn" if not get_tree().current_scene.name == 'Level2' else ""
+		get_tree().change_scene_to_file(level)

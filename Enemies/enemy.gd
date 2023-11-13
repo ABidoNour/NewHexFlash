@@ -2,17 +2,21 @@ extends CharacterBody2D
 
 var direction = Vector2.ZERO  # Declare and initialize 'direction'
 @export var speed = 400  # Speed of the enemy
-@onready var player = owner.get_node('Player')
+@onready var player = get_tree().current_scene.get_node('Player')
 var chase_player = false
 var maxhealth = 3
-var health = 3
+var health
 var healthbar 
 @onready var health_pickup_scene = preload("res://health_pickup.tscn")
 var random
-@export var health_pickup_chance = 65 # 65% chance of dropping
+@export var health_pickup_chance = 25 # 65% chance of dropping
 
 
 func _ready():
+	
+	if get_tree().current_scene.name == 'Level2':
+		maxhealth = 5
+	health = maxhealth
 	random = RandomNumberGenerator.new()
 	random.randomize()
 	$AnimatedSprite2D.play("default")
@@ -22,6 +26,7 @@ func _ready():
 	
 
 func _physics_process(delta):
+	print(get_tree().current_scene.name)
 	if not player.is_alive:
 		return
 	if chase_player:
@@ -47,7 +52,7 @@ func take_damage(damage_value : int):
 		if drop_pickup:
 			var health_pickup = health_pickup_scene.instantiate()
 			health_pickup.position = global_position
-			owner.call_deferred("add_child", health_pickup)
+			get_tree().current_scene.call_deferred("add_child", health_pickup)
 		queue_free()
 	
 	

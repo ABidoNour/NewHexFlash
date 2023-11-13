@@ -2,20 +2,25 @@ extends CharacterBody2D
 
 var direction = Vector2.ZERO  # Declare and initialize 'direction'
 @export var speed = 300  # Speed of the enemy
-@onready var player = owner.get_node('Player')
+@onready var player = get_tree().current_scene.get_node('Player')
 var chase_player = false
 var shoot_player = false
 var maxhealth = 3
-var health = 3
+var health
 var healthbar 
 @onready var health_pickup_scene = preload("res://health_pickup.tscn")
 @onready var bullet_scene : PackedScene = preload("res://Projectiles/enemy_projectile.tscn")
 var random
 var can_shoot : bool = true
-@export var health_pickup_chance = 85 # 1 in 2
+var bulletspeed = 800
+@export var health_pickup_chance = 50 # 1 in 2
 
 
 func _ready():
+	if get_tree().current_scene.name == 'Level2':
+		maxhealth = 5
+		bulletspeed = 1000
+	health = maxhealth
 	random = RandomNumberGenerator.new()
 	random.randomize()
 	healthbar = $UIHealthbar
@@ -58,7 +63,7 @@ func take_damage(damage_value : int):
 		if drop_pickup:
 			var health_pickup = health_pickup_scene.instantiate()
 			health_pickup.position = global_position
-			owner.call_deferred("add_child", health_pickup)
+			get_tree().current_scene.call_deferred("add_child", health_pickup)
 		queue_free()
 
 func _on_detection_area_body_entered(_body):
@@ -78,7 +83,7 @@ func _shoot():
 		var bullet = bullet_scene.instantiate()
 		bullet.position = $WandPosition.global_position
 		bullet.direction = (player.global_position - bullet.position).normalized()
-		bullet.speed = 800
+		bullet.speed = bulletspeed
 		get_tree().current_scene.call_deferred("add_child", bullet)
 
 func _on_shoot_cooldown_timeout():

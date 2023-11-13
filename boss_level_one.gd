@@ -9,8 +9,8 @@ var random = RandomNumberGenerator.new()
 var direction = Vector2.RIGHT
 @export var ray_cast_range : float = 400
 var is_agr = false
-var health = 15
-@export var maxhealth = 15
+var health
+@export var maxhealth = 25
 var healthbar
 @onready var key_scene : PackedScene = preload("res://pickups/level_1_key.tscn")
 
