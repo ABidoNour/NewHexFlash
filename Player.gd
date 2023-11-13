@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var speed : float = 700
 @export var maxHealth = 3
 @export var knockback_strength = 10000
-@onready var health = maxHealth
+var health
 @onready var effect_animation = $HurtEffect
 @onready var death_animation = $DeathEffect
 var fireball_scene: PackedScene = preload("res://Projectiles/fireball.tscn")
@@ -26,6 +26,11 @@ const SPRITE_MAP = {
 
 func _ready():
 	effect_animation.play("RESET")
+	if get_tree().current_scene.name == 'Level2':
+		maxHealth = 4
+	elif get_tree().current_scene.name == 'Level3':
+		maxHealth = 5
+	health = maxHealth
 
 func _process(_delta):
 	if not is_alive:

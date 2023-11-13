@@ -15,6 +15,8 @@ var random
 func _ready():
 	
 	if get_tree().current_scene.name == 'Level2':
+		maxhealth = 4
+	elif get_tree().current_scene.name == 'Level3':
 		maxhealth = 5
 	health = maxhealth
 	random = RandomNumberGenerator.new()

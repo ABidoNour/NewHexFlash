@@ -18,8 +18,11 @@ var bulletspeed = 800
 
 func _ready():
 	if get_tree().current_scene.name == 'Level2':
+		maxhealth = 4
+		bulletspeed = 950
+	elif get_tree().current_scene.name == 'Level3':
 		maxhealth = 5
-		bulletspeed = 1000
+		bulletspeed = 1200
 	health = maxhealth
 	random = RandomNumberGenerator.new()
 	random.randomize()
