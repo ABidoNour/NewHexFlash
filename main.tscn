@@ -159,7 +159,7 @@ position = Vector2(907, -2670)
 position = Vector2(1419, -2052)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_poj7j")]
-position = Vector2(1393, -4325)
+position = Vector2(397, 343)
 
 [node name="Projectiles" type="Node2D" parent="."]
 position = Vector2(-3, 2)
@@ -204,5 +204,5 @@ collision_mask = 2
 position = Vector2(1243, -4623)
 shape = SubResource("RectangleShape2D_tf5go")
 
-[connection signal="body_entered" from="TileMap/Door" to="TileMap/Door" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="TileMap/@Area2D@26575" to="TileMap/@Area2D@26575" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="BossActiveTrigger" to="." method="_on_boss_active_trigger_body_entered"]
