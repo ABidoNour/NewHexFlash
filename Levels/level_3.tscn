@@ -1578,10 +1578,10 @@ layer_2/tile_data = PackedInt32Array(-327687, 786433, 2, -262151, 786433, 3, -32
 [node name="EnemyTileMap" type="TileMap" parent="Enemies"]
 tile_set = SubResource("TileSet_8l4hg")
 format = 2
-layer_0/tile_data = PackedInt32Array(196596, 0, 65536, 327669, 0, 65536, 327677, 0, 65536, 65539, 0, 65536, 9, 0, 65536, 262156, 0, 65536, -327677, 0, 65536, -262149, 0, 65536, -524292, 0, 65536, -393229, 0, 65536, -524301, 0, 65536, 786430, 0, 65536, 917501, 0, 65536, 720900, 0, 65536, 917507, 0, 65536, 1376256, 0, 65536, 1572864, 0, 65536, 1572874, 0, 131072, 1376266, 0, 131072, 786437, 0, 131072, 983039, 0, 131072, 131085, 0, 131072, 327668, 0, 131072, -458758, 0, 131072, -589825, 0, 131072, -393230, 0, 131072)
+layer_0/tile_data = PackedInt32Array(196596, 0, 65536, 327669, 0, 65536, 9, 0, 65536, 262156, 0, 65536, -327677, 0, 65536, -262149, 0, 65536, -524292, 0, 65536, -393229, 0, 65536, -524301, 0, 65536, 786430, 0, 65536, 917501, 0, 65536, 720900, 0, 65536, 917507, 0, 65536, 1376256, 0, 65536, 1572864, 0, 65536, 1572874, 0, 131072, 1376266, 0, 131072, 786437, 0, 131072, 983039, 0, 131072, 131085, 0, 131072, 327668, 0, 131072, -458758, 0, 131072, -589825, 0, 131072, -393230, 0, 131072, 327683, 0, 65536)
 
 [node name="Player" parent="." instance=ExtResource("3_o12hi")]
-position = Vector2(-8, 259)
+position = Vector2(-324, 158)
 
 [node name="Door" parent="." instance=ExtResource("7_l1hp5")]
 position = Vector2(755, 2435)
@@ -1596,7 +1596,7 @@ offset_bottom = 97.0
 
 [node name="Boss" parent="." instance=ExtResource("8_orstr")]
 position = Vector2(601, 3030)
-maxhealth = 75
+maxhealth = 50
 
 [node name="BossActiveTrigger" type="Area2D" parent="."]
 collision_layer = 0
@@ -1615,3 +1615,5 @@ autoplay = true
 
 [node name="PauseMenu" parent="GUIPause" instance=ExtResource("11_3s5ur")]
 visible = false
+
+[connection signal="body_entered" from="BossActiveTrigger" to="." method="_on_boss_active_trigger_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bs5f5gskbvd4h"]
+[gd_scene load_steps=28 format=3 uid="uid://bs5f5gskbvd4h"]
 
 [ext_resource type="PackedScene" uid="uid://b5k1n2mfvw7hc" path="res://player.tscn" id="1_poj7j"]
 [ext_resource type="Script" path="res://main.gd" id="1_qlirn"]
@@ -15,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://2j4nwscbemuo" path="res://Art/Font/Adventurer (1).ttf" id="8_asawr"]
 [ext_resource type="PackedScene" uid="uid://ujcu01krltjm" path="res://Enemies/enemy.tscn" id="8_jayxu"]
 [ext_resource type="Script" path="res://AcceptDialog.gd" id="9_jdwb0"]
+[ext_resource type="Script" path="res://Tutorial Box.gd" id="14_5vcnj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ivha7"]
 resource_name = "floors"
@@ -2639,7 +2640,7 @@ position = Vector2(3604, -1507)
 position = Vector2(3700, -2137)
 
 [node name="BookEnemy26" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
-position = Vector2(3553, -3107)
+position = Vector2(3702, -3056)
 
 [node name="BookEnemy30" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
 position = Vector2(2614, -3631)
@@ -2648,13 +2649,13 @@ position = Vector2(2614, -3631)
 position = Vector2(1483, -2855)
 
 [node name="BookEnemy3" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
-position = Vector2(-135, -278)
+position = Vector2(1313, 89)
 
 [node name="BookEnemy6" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
-position = Vector2(919, 738)
+position = Vector2(1006, 602)
 
 [node name="BookEnemy7" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
-position = Vector2(921, -217)
+position = Vector2(1035, -199)
 
 [node name="Enemy" parent="Enemies/Books" instance=ExtResource("8_jayxu")]
 position = Vector2(2017, 139)
@@ -2683,7 +2684,7 @@ position = Vector2(907, -2670)
 position = Vector2(1419, -2052)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_poj7j")]
-position = Vector2(397, 343)
+position = Vector2(-505, 274)
 
 [node name="Projectiles" type="Node2D" parent="."]
 position = Vector2(-3, 2)
@@ -2707,6 +2708,10 @@ autoplay = true
 [node name="Tutorial Box" type="CanvasLayer" parent="."]
 offset = Vector2(500, 2.08165e-12)
 transform = Transform2D(1, 0, 0, 1, 500, 2.08165e-12)
+script = ExtResource("14_5vcnj")
+
+[node name="TutorialTimer" type="Timer" parent="Tutorial Box"]
+wait_time = 5.0
 
 [node name="AcceptDialog" type="AcceptDialog" parent="Tutorial Box"]
 title = "Welcome!"
@@ -2728,4 +2733,5 @@ collision_mask = 2
 position = Vector2(1243, -4623)
 shape = SubResource("RectangleShape2D_tf5go")
 
+[connection signal="timeout" from="Tutorial Box/TutorialTimer" to="Tutorial Box" method="_on_tutorial_timer_timeout"]
 [connection signal="body_entered" from="BossActiveTrigger" to="." method="_on_boss_active_trigger_body_entered"]

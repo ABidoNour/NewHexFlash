@@ -23,5 +23,5 @@ func _on_body_entered(body):
 		elif get_tree().current_scene.name == 'Level2':
 			level = 'res://Levels/level_3.tscn'
 		else:
-			level = "res://MainMenu/mainMenuBido.tscn"
+			level = "res://WinScreen.tscn"
 		get_tree().change_scene_to_file(level)
