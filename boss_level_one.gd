@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var ray_cast = $RayCast2D
 @onready var player = owner.get_node('Player')
+@export var stream : AudioStream
 var random = RandomNumberGenerator.new()
 
 
@@ -32,6 +33,7 @@ func _process(_delta):
 func take_damage(damage_value):
 	health -= damage_value
 	if health <= 0:
+		AudioManager.play_sound(stream)
 		var key = key_scene.instantiate()
 		key.position = global_position
 		owner.call_deferred("add_child", key)

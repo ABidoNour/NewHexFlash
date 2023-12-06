@@ -1,8 +1,9 @@
-[gd_scene load_steps=43 format=3 uid="uid://onn0t1bctei0"]
+[gd_scene load_steps=44 format=3 uid="uid://onn0t1bctei0"]
 
 [ext_resource type="Script" path="res://Enemies/enemy_wand.gd" id="1_46xqo"]
 [ext_resource type="Texture2D" uid="uid://bhps2q3vk0s58" path="res://Art/EnemySprites/WandGuy/WandGuySprite.png" id="1_ghmyg"]
 [ext_resource type="Texture2D" uid="uid://3r842jtuyu2l" path="res://Art/EnemySprites/WandGuy/WandGuySpriteRun.png" id="2_8eu58"]
+[ext_resource type="AudioStream" uid="uid://l2agklvkslrj" path="res://Audio/AudioManagerSounds/EnemyDeathSound.mp3" id="2_ljlii"]
 [ext_resource type="Texture2D" uid="uid://cnj70e5ms3css" path="res://Art/UIArt/EnemyHealthBar.png" id="4_3x2wb"]
 [ext_resource type="Texture2D" uid="uid://dmb7y20rb4p3q" path="res://Art/UIArt/EnemyHealthBar-sheet.png" id="5_rgrgk"]
 [ext_resource type="Texture2D" uid="uid://bm2uqpbygwufs" path="res://Art/EnemySprites/WandGuy/WandGuysWand.png" id="6_84ux8"]
@@ -255,6 +256,7 @@ animations = [{
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_46xqo")
+stream = ExtResource("2_ljlii")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://ujcu01krltjm"]
+[gd_scene load_steps=16 format=3 uid="uid://ujcu01krltjm"]
 
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_kt0yw"]
+[ext_resource type="AudioStream" uid="uid://l2agklvkslrj" path="res://Audio/AudioManagerSounds/EnemyDeathSound.mp3" id="2_fxl8m"]
 [ext_resource type="Texture2D" uid="uid://ybngj7l2iemy" path="res://Art/EnemySprites/BookFly_MoveForwards.png" id="2_yot4o"]
 [ext_resource type="Texture2D" uid="uid://cnj70e5ms3css" path="res://Art/UIArt/EnemyHealthBar.png" id="3_be3up"]
 [ext_resource type="Texture2D" uid="uid://dmb7y20rb4p3q" path="res://Art/UIArt/EnemyHealthBar-sheet.png" id="4_jya1g"]
@@ -70,6 +71,7 @@ radius = 700.035
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_kt0yw")
+stream = ExtResource("2_fxl8m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1.19209e-07, 1.13687e-13)

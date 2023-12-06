@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdnsr71fgq33u"]
+[gd_scene load_steps=8 format=3 uid="uid://bdnsr71fgq33u"]
 
 [ext_resource type="Script" path="res://pickups/level_1_key.gd" id="1_0areq"]
 [ext_resource type="Texture2D" uid="uid://5sco8y7tgoxv" path="res://Art/Pickups/key.png" id="1_copea"]
+[ext_resource type="AudioStream" uid="uid://dskxw3p0jer67" path="res://Audio/AudioManagerSounds/KeyPickUp.mp3" id="2_4g4qk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmgnd"]
 size = Vector2(71, 65)
@@ -48,6 +49,7 @@ scale = Vector2(1.25, 1.25)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_0areq")
+stream = ExtResource("2_4g4qk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.5, -0.5)

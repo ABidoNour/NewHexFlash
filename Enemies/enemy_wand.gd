@@ -14,6 +14,7 @@ var random
 var can_shoot : bool = true
 var bulletspeed = 800
 @export var health_pickup_chance = 50 # 1 in 2
+@export var stream : AudioStream
 
 
 func _ready():
@@ -62,6 +63,7 @@ func update_health():
 func take_damage(damage_value : int):
 	health -= damage_value
 	if health <= 0:
+		AudioManager.play_sound(stream)
 		var drop_pickup = (randi_range(1, 100) <= health_pickup_chance) # 1 in 2 chance
 		if drop_pickup:
 			var health_pickup = health_pickup_scene.instantiate()

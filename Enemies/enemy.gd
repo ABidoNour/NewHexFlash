@@ -10,6 +10,7 @@ var healthbar
 @onready var health_pickup_scene = preload("res://health_pickup.tscn")
 var random
 @export var health_pickup_chance = 25 # 65% chance of dropping
+@export var stream : AudioStream
 
 
 func _ready():
@@ -50,6 +51,7 @@ func update_health():
 func take_damage(damage_value : int):
 	health -= damage_value
 	if health <= 0:
+		AudioManager.play_sound(stream)
 		var drop_pickup = (randi_range(1, 100) <= health_pickup_chance)
 		if drop_pickup:
 			var health_pickup = health_pickup_scene.instantiate()
